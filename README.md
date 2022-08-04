@@ -13,7 +13,7 @@
 
             return maxSum
             
-2) 暴力：
+2) 暴力/还是有动态在里面
 
         def maxSubArray(nums):
             tmp = nums[0]
@@ -33,6 +33,22 @@
             return maxSum
         nums = [1,2,3,4]
         print(maxSubArray(nums))
+        
+        
+  3) 暴力：
+  
+          def maxSubArray(nums):
+            maxSum = nums[0]
+            n = len(nums)
+            for i in range(n-1):
+                if nums[i]>maxSum:
+                    maxSum = nums[i]
+                for j in range(i+1, n):
+                    subMax = sum(nums[i:j+1])
+                    if subMax > maxSum:
+                        maxSum = subMax
+
+            return maxSum
 
 
  
