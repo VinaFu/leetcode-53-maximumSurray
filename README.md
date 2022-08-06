@@ -50,6 +50,45 @@
 
             return maxSum
 
+4) burce fore
+
+                class Solution:
+                    def maxSubArray(self, nums: List[int]) -> int:
+                        sum1 = 0
+                        ans2 = 0
+                        n = len(nums)
+                        allSum = []
+                        for i in range(n):
+                                sum1 += nums[i]
+                                allSum.append(sum1)
+                                for j in range(i+1,n):
+                                        ans2 += nums[j]
+                                        allSum.append(ans2)
+                                ans2 =0
+                        return max(allSum)
+
+
+5) burce better force
+
+
+                        def add(nums):
+                                sum1 = 0
+                                ans2 = 0
+                                n = len(nums)
+                                large = nums[0]
+                                for i in range(n):
+                                        sum1 += nums[i]
+                                        if sum1 > large:
+                                                large = sum1
+                                        for j in range(i+1,n):
+                                                ans2 += nums[j]
+                                                if ans2 > large:
+                                                        large = ans2
+                                        ans2 =0
+                                return large
+
+                                nums = [-2,1,-3,4,-1,2,1,-5,4]
+                                print(add(nums))
 
  
     
