@@ -2,17 +2,18 @@
 
 1) class Solution:动态
 
-        dclass Solution:
+        class Solution:
             def maxSubArray(self, nums: List[int]) -> int:
                 maxSub = nums[0]
                 curSum = 0
                 for n in nums:
                     if curSum < 0:
                         curSum = 0
-                        # 从左边不是负数开始。这样才不能去除中间的负数。
                     curSum += n
-                    maxSub = max(maxSub, curSum)
+                    # adding up, till current sum is greater than 0.
+                    maxSub = max(curSum, maxSub)
                 return maxSub
+        
             
 2) 暴力/还是有动态在里面
 
@@ -41,7 +42,7 @@
           def maxSubArray(nums):
             maxSum = nums[0]
             n = len(nums)
-            for i in range(n-1):
+            for i in range(n):
                 if nums[i]>maxSum:
                     maxSum = nums[i]
                 for j in range(i+1, n):
