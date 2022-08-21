@@ -2,16 +2,17 @@
 
 1) class Solution:动态
 
-        def maxSubArray(self, nums: List[int]) -> int:
-            n = len(nums)
-            maxSum = nums[0]
-            minSum = sum = 0
-            for i in range(n):
-                sum += nums[i]
-                maxSum = max(maxSum, sum - minSum)
-                minSum = min(minSum, sum)
-
-            return maxSum
+        dclass Solution:
+            def maxSubArray(self, nums: List[int]) -> int:
+                maxSub = nums[0]
+                curSum = 0
+                for n in nums:
+                    if curSum < 0:
+                        curSum = 0
+                        # 从左边不是负数开始。这样才不能去除中间的负数。
+                    curSum += n
+                    maxSub = max(maxSub, curSum)
+                return maxSub
             
 2) 暴力/还是有动态在里面
 
@@ -50,45 +51,9 @@
 
             return maxSum
 
-4) burce fore
-
-                class Solution:
-                    def maxSubArray(self, nums: List[int]) -> int:
-                        sum1 = 0
-                        ans2 = 0
-                        n = len(nums)
-                        allSum = []
-                        for i in range(n):
-                                sum1 += nums[i]
-                                allSum.append(sum1)
-                                for j in range(i+1,n):
-                                        ans2 += nums[j]
-                                        allSum.append(ans2)
-                                ans2 =0
-                        return max(allSum)
 
 
-5) burce better force
 
-
-                        def add(nums):
-                                sum1 = 0
-                                ans2 = 0
-                                n = len(nums)
-                                large = nums[0]
-                                for i in range(n):
-                                        sum1 += nums[i]
-                                        if sum1 > large:
-                                                large = sum1
-                                        for j in range(i+1,n):
-                                                ans2 += nums[j]
-                                                if ans2 > large:
-                                                        large = ans2
-                                        ans2 =0
-                                return large
-
-                                nums = [-2,1,-3,4,-1,2,1,-5,4]
-                                print(add(nums))
 
  
     
